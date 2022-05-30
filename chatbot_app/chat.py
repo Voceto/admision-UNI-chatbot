@@ -76,7 +76,7 @@ def inserta(json_data,conexion_switch=2):
 
 
 contexto = lee_contexto(1)
-print(contexto)
+#print(contexto)
 # TODO: CARGAR A BASE DE DATOS
 contexto_total = """La tasa de selectividad o admisión es de un ingresante por cada nueve postulantes. 
 La Oficina de Central de Admisión (OCAD) inició sus actividades en 1980. 

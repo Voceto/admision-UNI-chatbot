@@ -57,14 +57,14 @@ def inserta(json_data,conexion_switch=2):
 
     cnx = conexion(conexion_switch)
     cursor = cnx.cursor()
-    add_data = ("INSERT INTO pregunta "
+    add_data = ("INSERT INTO preguntas "
                 "(pregunta, entendio)"
                 "VALUES (%s, %s)")
     value_data = (preg, entendio)
     cursor.execute(add_data, value_data)
     last_id = cursor.lastrowid
 
-    add_data = ("INSERT INTO respuesta "
+    add_data = ("INSERT INTO respuestas "
                 "(score, start, end, answer, id_pregunta)"
                 "VALUES (%s, %s, %s, %s, %s)")
     value_data = (score, start, end, answer, last_id)
@@ -193,10 +193,18 @@ La nota mínima promedio para ingresar a Ingeniería Textil es 11.186.
 """
 
 nlp = init_model();
-# Obtener respuesta del modelo BERT
+#Obtener respuesta del modelo BERT
 def get_response(msg):
     response = nlp({'question': msg, 'context': contexto})
     print(response)
     if response['score'] < 0.0001: # La probabilidad de haber respondido correctamente es menor que 10%
         response['answer'] = "No estoy muy seguro de mi respuesta"
     return response
+
+# def get_response(msg):
+#     response = nlp({'question': msg, 'context': contexto_total})
+#     print(response)
+#     if response['score'] > 0.0001:  # Cuándo la probabilidad de haber respondido satisfactoriamente sea mayor a 10%
+#         return response['answer']
+#     else:
+#         return "No estoy muy seguro de mi respuesta"

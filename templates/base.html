@@ -2,7 +2,7 @@
 <html lang="en">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Chatbot</title>
@@ -52,13 +52,13 @@
     </div>
 
 </div>
+<script>
+    $SCRIPT_ROOT = {{ request.script_root|tojson }};
+</script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='responses.js') }}"></script>
-    <script>
-        $SCRIPT_ROOT = {{ request.script_root|tojson }};
-    </script>
+
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
